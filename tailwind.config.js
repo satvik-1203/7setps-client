@@ -11,6 +11,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ["'Poppins'", ...tailwindCss.fontFamily.sans],
+      patrick: ["'Patrick Hand SC'"],
     },
     extend: {},
   },
