@@ -20,11 +20,14 @@ const Home = () => {
   return (
     <div>
       <HomeOne />
-      <div className="min-h-screen flex items-center">
+      <div
+        id="ourStory"
+        className="min-h-screen md:min-h-[800px]  mx-auto max-w-4xl flex items-center"
+      >
         <OurStory data={ourStory} />
       </div>
       <HomeTwo />
-      <div className="min-h-screen py-8">
+      <div className="min-h-screen max-w-4xl md:min-h-[700px] py-8 mx-auto">
         <HomeTwoData data={question} />
       </div>
     </div>

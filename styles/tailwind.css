@@ -23,4 +23,7 @@ body {
   a {
     @apply text-blue-400;
   }
+  .wordSpacing {
+    word-spacing: 2px;
+  }
 }

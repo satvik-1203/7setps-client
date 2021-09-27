@@ -1,8 +1,10 @@
 import React from "react";
 
-interface Props {}
+interface Props {
+  setState: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const Nav: React.FC<Props> = () => {
+const Nav: React.FC<Props> = ({ setState }) => {
   return (
     <nav className="p-[20px] flex absolute top-0 left-0 right-0  z-50 justify-between">
       <div>
@@ -12,7 +14,10 @@ const Nav: React.FC<Props> = () => {
           className="w-48"
         />
       </div>
-      <div className=" flex space-y-1 flex-col py-2">
+      <div
+        onClick={() => setState((prev) => !prev)}
+        className="flex space-y-1 flex-col py-2"
+      >
         <div className="w-5 h-[2px] bg-black"></div>
         <div className="w-5 h-[2px] bg-black"></div>
         <div className="w-5 h-[2px] bg-black"></div>

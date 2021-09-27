@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { IHomeTwo } from "@Root/pages/index";
-import { AnimateSharedLayout } from "framer-motion";
-import Questions from "./Questions";
+import Questions from "../../shared/Questions";
 
 interface Props {
   data: IHomeTwo;
@@ -18,7 +17,7 @@ const HomeTwoData: React.FC<Props> = ({ data }) => {
   return (
     <div>
       <div
-        className="px-12 py-4 mb-16 text-lg italic"
+        className="px-12 py-4 mb-16 text-lg italic "
         dangerouslySetInnerHTML={{ __html: data.quote }}
       />
       <div className=" px-4 ">
