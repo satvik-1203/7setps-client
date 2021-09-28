@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Nav from "./Nav";
 import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
-import Link from "next/link";
+import NavOptions from "./NavOptions";
 
 const bodyVariants = {
   initial: {
@@ -18,6 +18,8 @@ const bodyVariants = {
     },
   },
 };
+
+export type NavOptions = typeof navOptions;
 
 const navOptions = [
   {
@@ -39,7 +41,7 @@ const navOptions = [
 ];
 
 const Layout: React.FC = ({ children }) => {
-  const [navOpen, setNavOPen] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
   const control = useAnimation();
 
   useEffect(() => {
@@ -53,22 +55,21 @@ const Layout: React.FC = ({ children }) => {
       document.body.style.overflowY = "scroll";
     }
   }, [navOpen]);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 1024) setNavOpen(() => false);
+    });
+  }, []);
+
   return (
     <>
-      <div className="">
-        <div className="absolute right-0 top-0 bottom-0 w-[80%]">
-          {navOptions.map((option, index) => (
-            <Link key={index} href={option.path}>
-              <a>
-                <div className="font-patrick h-[4.5rem] tracking-widest border-b-[0.1px] border-gray-200 text-black flex justify-center items-center">
-                  {option.name}
-                </div>
-              </a>
-            </Link>
-          ))}
+      <div>
+        <div className="absolute lg:hidden right-0 top-0 bottom-0  w-[80%]">
+          <NavOptions navOptions={navOptions} />
         </div>
-        <motion.div variants={bodyVariants} className="z-10" animate={control}>
-          <Nav setState={setNavOPen} />
+        <motion.div className="z-10" variants={bodyVariants} animate={control}>
+          <Nav navOptions={navOptions} setState={setNavOpen} />
           {children}
         </motion.div>
       </div>
