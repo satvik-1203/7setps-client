@@ -34,7 +34,7 @@ const Questions: React.FC<Props> = ({
     <motion.div
       layout
       onClick={() => handleQuestionState(id)}
-      className="border-gray-300 border-b-[0.5px] mt-7"
+      className="border-gray-300 border-b-[0.5px] mt-7 cursor-pointer"
     >
       <motion.div className="text-xl flex justify-between items-center" layout>
         <span>{question}</span>

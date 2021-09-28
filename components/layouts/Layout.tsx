@@ -43,12 +43,19 @@ const Layout: React.FC = ({ children }) => {
   const control = useAnimation();
 
   useEffect(() => {
-    if (navOpen) control.start("animate");
-    if (!navOpen) control.start("initial");
+    if (navOpen) {
+      control.start("animate") && window.scrollTo({ top: 0 });
+      document.body.style.overflowY = "hidden";
+    }
+
+    if (!navOpen) {
+      control.start("initial");
+      document.body.style.overflowY = "scroll";
+    }
   }, [navOpen]);
   return (
     <>
-      <div className="relative">
+      <div className="">
         <div className="absolute right-0 top-0 bottom-0 w-[80%]">
           {navOptions.map((option, index) => (
             <Link key={index} href={option.path}>
@@ -60,7 +67,7 @@ const Layout: React.FC = ({ children }) => {
             </Link>
           ))}
         </div>
-        <motion.div variants={bodyVariants} animate={control}>
+        <motion.div variants={bodyVariants} className="z-10" animate={control}>
           <Nav setState={setNavOPen} />
           {children}
         </motion.div>
