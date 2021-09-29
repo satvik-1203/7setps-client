@@ -3,6 +3,7 @@ import Nav from "./Nav";
 import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
 import NavOptions from "./NavOptions";
+import { navOptions } from "@Misc/navOptions";
 
 const bodyVariants = {
   initial: {
@@ -18,27 +19,6 @@ const bodyVariants = {
     },
   },
 };
-
-export type NavOptions = typeof navOptions;
-
-const navOptions = [
-  {
-    name: "HOME",
-    path: "/",
-  },
-  {
-    name: "HOW DO WE DO IT ?",
-    path: "/how-do-we-do-it",
-  },
-  {
-    name: "PROFILES",
-    path: "/profiles",
-  },
-  {
-    name: "CONTACT US",
-    path: "/contact-us",
-  },
-];
 
 const Layout: React.FC = ({ children }) => {
   const [navOpen, setNavOpen] = useState(false);
@@ -60,6 +40,8 @@ const Layout: React.FC = ({ children }) => {
     window.addEventListener("resize", () => {
       if (window.innerWidth >= 1024) setNavOpen(() => false);
     });
+
+    return () => window.removeEventListener("resize", () => {});
   }, []);
 
   return (

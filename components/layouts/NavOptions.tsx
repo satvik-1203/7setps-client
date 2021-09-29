@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { NavOptions } from "./Layout";
+import { NavOptions } from "@Misc/navOptions";
 
 interface Props {
   navOptions: NavOptions;

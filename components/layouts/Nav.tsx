@@ -1,5 +1,5 @@
 import React from "react";
-import { NavOptions } from "./Layout";
+import { NavOptions } from "@Misc/navOptions";
 import Link from "next/link";
 
 interface Props {
@@ -8,7 +8,6 @@ interface Props {
 }
 
 const Nav: React.FC<Props> = ({ setState, navOptions }) => {
-  console.log(navOptions);
   return (
     <nav className="p-[20px] lg:px-[60px] flex absolute top-0 left-0 right-0 z-50 justify-between items-center">
       <div>
