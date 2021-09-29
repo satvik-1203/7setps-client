@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
 import NavOptions from "./NavOptions";
 import { navOptions } from "@Misc/navOptions";
+import { useRouter } from "next/router";
 
 const bodyVariants = {
   initial: {
@@ -23,6 +24,7 @@ const bodyVariants = {
 const Layout: React.FC = ({ children }) => {
   const [navOpen, setNavOpen] = useState(false);
   const control = useAnimation();
+  const router = useRouter();
 
   useEffect(() => {
     if (navOpen) {
@@ -44,11 +46,15 @@ const Layout: React.FC = ({ children }) => {
     return () => window.removeEventListener("resize", () => {});
   }, []);
 
+  useEffect(() => {
+    setNavOpen(false);
+  }, [router.pathname]);
+
   return (
     <>
       <div>
         <div className="absolute lg:hidden right-0 top-0 bottom-0  w-[80%]">
-          <NavOptions navOptions={navOptions} />
+          <NavOptions state={navOpen} navOptions={navOptions} />
         </div>
         <motion.div className="z-10" variants={bodyVariants} animate={control}>
           <Nav navOptions={navOptions} setState={setNavOpen} />

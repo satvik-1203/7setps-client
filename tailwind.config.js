@@ -13,7 +13,11 @@ module.exports = {
       sans: ["'Poppins'", ...tailwindCss.fontFamily.sans],
       patrick: ["'Patrick Hand SC'"],
     },
-    extend: {},
+    extend: {
+      zIndex: {
+        "-10": -10,
+      },
+    },
   },
   variants: {
     extend: {},

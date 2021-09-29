@@ -1,6 +1,7 @@
 import React from "react";
 
 import { IOurStory } from "@Root/pages/index";
+import Button from "@Components/shared/Button";
 
 interface Props {
   data: IOurStory;
@@ -24,9 +25,9 @@ const OurStory: React.FC<Props> = ({ data }) => {
         </div>
 
         <div>
-          <button className="px-6 py-3 border-2 xl:border mr-20 border-black text-xs tracking-widest my-4 mt-8 md:mt-0 ">
-            PING US
-          </button>
+          <Button
+            data={{ name: "PING US", type: "button", className: "md:mt-0" }}
+          />
         </div>
       </div>
     </div>
