@@ -3,16 +3,22 @@ import IInput from "@Interfaces/input.interface";
 
 interface Props {
   inputInfo: IInput;
+  handleFormState: (stateName: string, value: string) => void;
 }
 
-const InputBox: React.FC<Props> = ({ inputInfo }) => {
-  const { id, name, placeholder, type } = inputInfo;
+const InputBox: React.FC<Props> = ({ inputInfo, handleFormState }) => {
+  const { id, name, placeholder, type, stateName, value } = inputInfo;
   return (
     <div className="relative">
       <input
         id={name}
+        onChange={(e) => {
+          if (!stateName) return;
+          handleFormState(stateName, e.target.value);
+        }}
         name={name}
         type={type}
+        value={value}
         className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600"
         placeholder={placeholder}
       />
