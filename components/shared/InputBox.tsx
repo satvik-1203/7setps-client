@@ -10,7 +10,7 @@ const InputBox: React.FC<Props> = ({ inputInfo }) => {
   return (
     <div className="relative">
       <input
-        id={id}
+        id={name}
         name={name}
         type={type}
         className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600"
