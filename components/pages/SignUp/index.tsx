@@ -15,7 +15,6 @@ const index: React.FC<Props> = () => {
 
   const inputs: IInput[] = [
     {
-      id: "username",
       name: "username",
       placeholder: "Username",
       type: "text",
@@ -23,7 +22,6 @@ const index: React.FC<Props> = () => {
       value: formStates.username,
     },
     {
-      id: "email",
       name: "email",
       placeholder: "example@email.com",
       type: "email",
@@ -31,7 +29,6 @@ const index: React.FC<Props> = () => {
       value: formStates.email,
     },
     {
-      id: "password",
       name: "password",
       placeholder: "Password",
       type: "password",
@@ -39,7 +36,6 @@ const index: React.FC<Props> = () => {
       value: formStates.password,
     },
     {
-      id: "confirm password",
       name: "confirm password",
       placeholder: "Confirm Password",
       type: "password",

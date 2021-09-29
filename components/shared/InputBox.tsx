@@ -7,7 +7,7 @@ interface Props {
 }
 
 const InputBox: React.FC<Props> = ({ inputInfo, handleFormState }) => {
-  const { id, name, placeholder, type, stateName, value } = inputInfo;
+  const { name, placeholder, type, stateName, value } = inputInfo;
   return (
     <div className="relative">
       <input
