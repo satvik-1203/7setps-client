@@ -3,9 +3,10 @@ import React from "react";
 
 interface Props {
   data: IButton;
+  onClick?: any;
 }
 
-const Button: React.FC<Props> = ({ data }) => {
+const Button: React.FC<Props> = ({ data, onClick }) => {
   const { name, type, className } = data;
   return (
     <button

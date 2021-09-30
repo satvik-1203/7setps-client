@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import IInput from "@Interfaces/input.interface";
 import InputBox from "@Components/shared/InputBox";
 import Button from "@Components/shared/Button";
+import { signUp as signUpURL } from "@Root/misc/URLS";
+import axios from "axios";
 
 interface Props {}
 
@@ -44,6 +46,15 @@ const index: React.FC<Props> = () => {
     },
   ];
 
+  const onSubmit = async (e?: React.FormEvent<HTMLFormElement>) => {
+    e && e.preventDefault();
+    console.log(formStates);
+    const res = await axios
+      .post(signUpURL(), formStates)
+      .catch((err) => console.log(err.message));
+    if (res) console.log(res.data);
+  };
+
   const handleFormState = (stateName: string, value: string) => {
     setFormStates((prevState) => ({ ...prevState, [stateName]: value }));
   };
@@ -51,11 +62,7 @@ const index: React.FC<Props> = () => {
   return (
     <div className="min-h-screen flex justify-center items-center max-w-[800px] mx-auto bg-white">
       <main className="w-3/4">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-        >
+        <form onSubmit={onSubmit}>
           <div className="flex flex-col space-y-7 w-full">
             {inputs.map((input, index) => (
               <InputBox
