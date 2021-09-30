@@ -5,17 +5,21 @@ export const navOptions = [
     name: "HOME",
     path: "/",
   },
+  // {
+  //   name: "HOW DO WE DO IT ?",
+  //   path: "/how-do-we-do-it",
+  // },
+  // {
+  //   name: "PROFILES",
+  //   path: "/profiles",
+  // },
+  // {
+  //   name: "CONTACT US",
+  //   path: "/contact-us",
+  // },
   {
-    name: "HOW DO WE DO IT ?",
-    path: "/how-do-we-do-it",
-  },
-  {
-    name: "PROFILES",
-    path: "/profiles",
-  },
-  {
-    name: "CONTACT US",
-    path: "/contact-us",
+    name: "LOGIN",
+    path: "/login",
   },
   {
     name: "SIGN UP",
