@@ -2,10 +2,11 @@ import "../styles/app.scss";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import Layout from "@Components/layouts/Layout";
+import GlobalState from "@Context/state";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <GlobalState>
       <Head>
         <link
           rel="icon"
@@ -22,7 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </>
+    </GlobalState>
   );
 }
 

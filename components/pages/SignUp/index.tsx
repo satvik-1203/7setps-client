@@ -52,7 +52,7 @@ const index: React.FC<Props> = () => {
     const res = await axios
       .post(signUpURL(), formStates)
       .catch((err) => console.log(err.message));
-    if (res) console.log(res.data);
+    // add jwt to the state
   };
 
   const handleFormState = (stateName: string, value: string) => {

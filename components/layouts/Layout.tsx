@@ -53,8 +53,12 @@ const Layout: React.FC = ({ children }) => {
   return (
     <>
       <div>
-        <div className="absolute lg:hidden right-0 top-0 bottom-0  w-[80%]">
-          <NavOptions state={navOpen} navOptions={navOptions} />
+        <div
+          className={`${
+            navOpen ? "block" : "hidden"
+          } absolute lg:hidden right-0 top-0 bottom-0  w-[80%]`}
+        >
+          <NavOptions navOptions={navOptions} />
         </div>
         <motion.div className="z-10" variants={bodyVariants} animate={control}>
           <Nav navOptions={navOptions} setState={setNavOpen} />
