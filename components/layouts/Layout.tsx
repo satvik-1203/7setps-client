@@ -62,7 +62,13 @@ const Layout: React.FC = ({ children }) => {
         </motion.div>
       </div>
       <div className="fixed right-9 bottom-8 cursor-pointer rounded-full wShadows">
-        <Image width="60" height="60" src="/whatsapp.svg" />
+        <a
+          href="https://api.whatsapp.com/send?phone=+17324293342&amp;text=Hi%21%20I am interested in Vedika Matrimonry"
+          className="float"
+          target="_blank"
+        >
+          <Image width="60" height="60" src="/whatsapp.svg" />
+        </a>
       </div>
     </>
   );

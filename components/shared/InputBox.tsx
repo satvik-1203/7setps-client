@@ -3,7 +3,7 @@ import IInput from "@Interfaces/input.interface";
 
 interface Props {
   inputInfo: IInput;
-  handleFormState: (stateName: string, value: string) => void;
+  handleFormState?: (stateName: string, value: string) => void;
 }
 
 const InputBox: React.FC<Props> = ({ inputInfo, handleFormState }) => {
@@ -14,12 +14,13 @@ const InputBox: React.FC<Props> = ({ inputInfo, handleFormState }) => {
         id={name}
         onChange={(e) => {
           if (!stateName) return;
+          if (!handleFormState) return;
           handleFormState(stateName, e.target.value);
         }}
         name={name}
         type={type}
         value={value}
-        className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600"
+        className="peer h-10 w-full border-b-2 border-gray-400 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600"
         placeholder={placeholder}
       />
       <label
