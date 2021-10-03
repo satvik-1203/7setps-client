@@ -4,6 +4,9 @@ import InputBox from "@Components/shared/InputBox";
 import Button from "@Components/shared/Button";
 import { signUp as signUpURL } from "@Root/misc/URLS";
 import axios from "axios";
+import jwt from "jsonwebtoken";
+import router from "next/router";
+import useContext from "@Context/useGlobalContext";
 
 interface Props {}
 
@@ -14,6 +17,8 @@ const index: React.FC<Props> = () => {
     password: "",
     confirmPassword: "",
   });
+
+  const { dispatch } = useContext();
 
   const inputs: IInput[] = [
     {
@@ -48,11 +53,26 @@ const index: React.FC<Props> = () => {
 
   const onSubmit = async (e?: React.FormEvent<HTMLFormElement>) => {
     e && e.preventDefault();
-    console.log(formStates);
-    const res = await axios
-      .post(signUpURL(), formStates)
-      .catch((err) => console.log(err.message));
-    // add jwt to the state
+    try {
+      const {
+        data: { token },
+      } = await axios.post<{ token: string }>(signUpURL(), formStates);
+
+      const tokenDecode: any = jwt.decode(token);
+      const { email, verified, username } = tokenDecode;
+
+      dispatch({
+        type: "SET_STATE",
+        payload: {
+          token: token,
+          email: email,
+          verify: verified,
+          username: username,
+        },
+      });
+
+      router.push("/account");
+    } catch (err) {}
   };
 
   const handleFormState = (stateName: string, value: string) => {

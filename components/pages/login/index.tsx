@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import jwt from "jsonwebtoken";
 import InputBox from "@Components/shared/InputBox";
 import Button from "@Components/shared/Button";
 import IInput from "@Interfaces/input.interface";
 import { login } from "@Misc/URLS";
-import { useRouter } from "next/router";
+import router from "next/router";
+import useContext from "@Context/useGlobalContext";
 
 interface Props {}
 
@@ -14,9 +15,7 @@ const index: React.FC<Props> = () => {
     email: "",
     password: "",
   });
-
-  const router = useRouter();
-
+  const { dispatch } = useContext();
   const inputs: IInput[] = [
     {
       name: "email",
@@ -41,10 +40,27 @@ const index: React.FC<Props> = () => {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const res = await axios.post(login(), formStates);
-      document.cookie = `token=${res.data.token}`;
+      const {
+        data: { token },
+      } = await axios.post<{ token: string }>(login(), formStates);
+
+      document.cookie = `token=${token}`;
       router.push("/account");
-      console.log(res);
+
+      const tokenDecode: any = jwt.decode(token);
+      const { email, verified, username } = tokenDecode;
+
+      dispatch({
+        type: "SET_STATE",
+        payload: {
+          token: token,
+          email: email,
+          verify: verified,
+          username: username,
+        },
+      });
+
+      router.push("/account");
     } catch (err) {
       console.log(err);
     }
