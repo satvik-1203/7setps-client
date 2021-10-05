@@ -1,10 +1,10 @@
 import React from "react";
-import { NavOptions } from "@Misc/navOptions";
+import { INavOptions } from "@Misc/navOptions";
 import Link from "next/link";
 
 interface Props {
   setState: React.Dispatch<React.SetStateAction<boolean>>;
-  navOptions: NavOptions;
+  navOptions: INavOptions[];
 }
 
 const Nav: React.FC<Props> = ({ setState, navOptions }) => {
