@@ -9,6 +9,7 @@ export interface State {
   readonly username: string;
   readonly email: string;
   readonly verify: boolean;
+  readonly logged: boolean;
 }
 
 const initialState: State = {
@@ -16,6 +17,7 @@ const initialState: State = {
   token: "",
   username: "",
   verify: false,
+  logged: false,
 };
 
 const GlobalState: React.FC = ({ children }) => {

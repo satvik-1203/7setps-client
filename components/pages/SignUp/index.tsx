@@ -68,6 +68,7 @@ const index: React.FC<Props> = () => {
           email: email,
           verify: verified,
           username: username,
+          logged: true,
         },
       });
 

@@ -3,8 +3,9 @@ import Nav from "./Nav";
 import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
 import NavOptions from "./NavOptions";
-import { navOptions } from "@Misc/navOptions";
+import { navOptionsNotLogged, navOptionsLogged } from "@Misc/navOptions";
 import { useRouter } from "next/router";
+import useContext from "@Context/useGlobalContext";
 
 const bodyVariants = {
   initial: {
@@ -25,6 +26,8 @@ const Layout: React.FC = ({ children }) => {
   const [navOpen, setNavOpen] = useState(false);
   const control = useAnimation();
   const router = useRouter();
+  const { state } = useContext();
+  const { logged } = state;
 
   useEffect(() => {
     if (navOpen) {
@@ -49,6 +52,8 @@ const Layout: React.FC = ({ children }) => {
   useEffect(() => {
     setNavOpen(false);
   }, [router.pathname]);
+
+  const navOptions = logged ? navOptionsLogged : navOptionsNotLogged;
 
   return (
     <>

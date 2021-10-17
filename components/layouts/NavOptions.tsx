@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import { NavOptions } from "@Misc/navOptions";
+import { INavOptions } from "@Misc/navOptions";
 
 interface Props {
-  navOptions: NavOptions;
+  navOptions: INavOptions[];
 }
 
 const NavOption: React.FC<Props> = ({ navOptions }) => {

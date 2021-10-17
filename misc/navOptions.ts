@@ -1,6 +1,9 @@
-export type NavOptions = typeof navOptions;
+export interface INavOptions {
+  name: string;
+  path: string;
+}
 
-export const navOptions = [
+export const navOptionsNotLogged: INavOptions[] = [
   {
     name: "HOME",
     path: "/",
@@ -24,5 +27,20 @@ export const navOptions = [
   {
     name: "SIGN UP",
     path: "/sign-up",
+  },
+];
+
+export const navOptionsLogged: INavOptions[] = [
+  {
+    name: "HOME",
+    path: "/",
+  },
+  {
+    name: "ACCOUNT",
+    path: "/account",
+  },
+  {
+    name: "REGISTER",
+    path: "/register",
   },
 ];

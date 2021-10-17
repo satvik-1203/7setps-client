@@ -17,6 +17,7 @@ body {
 @layer components {
   h1 {
     @apply text-3xl font-light;
+    @apply text-center py-3;
   }
   p {
     @apply py-4  text-sm;
@@ -27,5 +28,8 @@ body {
   }
   .wordSpacing {
     word-spacing: 2px;
+  }
+  main {
+    @apply max-w-[800px] mx-auto;
   }
 }

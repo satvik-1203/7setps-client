@@ -1,21 +1,17 @@
 import React from "react";
-import type {
-  NextPage,
-  GetServerSideProps,
-  GetServerSidePropsContext,
-} from "next";
+import Account from "@Components/pages/account";
 
 import { requireAuthentication } from "@Root/misc/authenticatedRoute";
 
-const account: NextPage = () => {
+const account = ({}: typeof getServerSideProps) => {
   return (
     <>
-      <div>Hello user</div>
+      <Account />
     </>
   );
 };
 
-export const getServerSideProps = requireAuthentication(async (ctx) => {
+export const getServerSideProps = requireAuthentication(async (_) => {
   return {
     props: {},
   };
