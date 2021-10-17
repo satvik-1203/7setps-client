@@ -191,7 +191,7 @@ export const registerFormUserDetails: Array<IFormField> = [
     components: [
       {
         type: "textArea",
-        extraData: "Doctorate/Masters/Bachelors/Associate Name of University ",
+        extraData: "Doctorate/Masters/Bachelors/Associate\nName of University ",
         name: "education",
         placeholder:
           "Details about your Education (Mention each degree & University)",
@@ -204,7 +204,7 @@ export const registerFormUserDetails: Array<IFormField> = [
     components: [
       {
         type: "textArea",
-        extraData: "Company/Hospital Name Position Held",
+        extraData: "Company/Hospital Name\nPosition Held",
         name: "professionalDetails",
         placeholder: "Details about your profession -  Company & Position held",
       },
@@ -234,17 +234,6 @@ export const registerFormUserDetails: Array<IFormField> = [
 ];
 
 export const registerFormFamilyDetails: Array<IFormField> = [
-  {
-    name: "Father's Name",
-    required: true,
-    components: [
-      {
-        type: "input",
-        inputType: "text",
-        name: "fatherName",
-      },
-    ],
-  },
   {
     name: "Father's Name",
     required: true,
